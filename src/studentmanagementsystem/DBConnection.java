@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class DBConnection {
     public static Connection getConnection() throws ClassNotFoundException, SQLException{
         Class.forName("com.mysql.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost/libraray?useSSL=false&user=root&password=ykpt22270");
+          Connection con = DriverManager.getConnection("jdbc:mysql://localhost/attendance?useSSL=false&user=root&password=ykpt22270");
           return con;
     }
 }
