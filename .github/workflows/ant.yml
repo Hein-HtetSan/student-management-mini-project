@@ -20,5 +20,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Build with Ant
-        run: ant -Dplatforms.JDK_1.8.home=<path_to_JDK_home> jar
+        run: ant jar
 
