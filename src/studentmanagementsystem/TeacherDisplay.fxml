@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="studentmanagementsystem.TeacherDisplayController">
+    <stylesheets>
+        <URL value="@teacherdisplay.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="tbl" layoutX="14.0" layoutY="26.0" prefHeight="317.0" prefWidth="579.0">
+        <columns>
+          <TableColumn fx:id="sTimeCol" prefWidth="98.39996337890625" text="Start Time" />
+          <TableColumn fx:id="eTimeCol" prefWidth="87.99993896484375" text="End Time" />
+            <TableColumn fx:id="subCol" prefWidth="128.79998779296875" text="Subject" />
+            <TableColumn fx:id="stdNameCol" prefWidth="157.5999755859375" text="Student Name" />
+            <TableColumn fx:id="attdCol" prefWidth="112.800048828125" text="Attendance" />
+        </columns>
+      </TableView>
+      <Button layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#callDisplay" prefHeight="48.0" prefWidth="83.0" styleClass="btn" text="Display">
+         <effect>
+            <InnerShadow />
+         </effect>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
