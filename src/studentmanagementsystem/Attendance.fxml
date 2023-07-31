@@ -14,23 +14,28 @@
             <Font name="Times New Roman Bold Italic" size="36.0" />
          </font>
       </Label>
-      <TextField layoutX="189.0" layoutY="75.0" prefHeight="40.0" prefWidth="238.0" promptText="Start Time:" />
-      <TextField layoutX="189.0" layoutY="122.0" prefHeight="40.0" prefWidth="238.0" promptText="End Time:" />
-      <TextField layoutX="189.0" layoutY="170.0" prefHeight="40.0" prefWidth="238.0" promptText="Subject" />
-      <TextField layoutX="189.0" layoutY="218.0" prefHeight="40.0" prefWidth="238.0" promptText="Student Name" />
-      <TextField layoutX="189.0" layoutY="266.0" prefHeight="40.0" prefWidth="238.0" promptText="Attendance" />
-      <Button layoutX="175.0" layoutY="315.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="72.0" style="-fx-background-color: cyan;" text="Add">
+      <TextField fx:id="txtSTime" layoutX="189.0" layoutY="75.0" prefHeight="40.0" prefWidth="238.0" promptText="Start Time:" />
+      <TextField fx:id="txtETime" layoutX="189.0" layoutY="122.0" prefHeight="40.0" prefWidth="238.0" promptText="End Time:" />
+      <TextField fx:id="txtSub" layoutX="189.0" layoutY="170.0" prefHeight="40.0" prefWidth="238.0" promptText="Subject" />
+      <TextField fx:id="txtStdName" layoutX="189.0" layoutY="218.0" prefHeight="40.0" prefWidth="238.0" promptText="Student Name" />
+      <TextField fx:id="txtAttd" layoutX="189.0" layoutY="266.0" prefHeight="40.0" prefWidth="238.0" promptText="Attendance" />
+      <Button layoutX="153.0" layoutY="315.0" mnemonicParsing="false" onAction="#addAttendance" prefHeight="40.0" prefWidth="72.0" style="-fx-background-color: cyan;" text="Add">
          <effect>
             <InnerShadow />
          </effect>
       </Button>
-      <Button layoutX="258.0" layoutY="315.0" mnemonicParsing="false" onAction="#addStudent" prefHeight="40.0" prefWidth="104.0" style="-fx-background-color: cyan;" text="Add Student">
+      <Button layoutX="237.0" layoutY="315.0" mnemonicParsing="false" onAction="#addStudent" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: cyan;" text="Add Attendance">
          <effect>
             <InnerShadow />
          </effect>
       </Button>
-      <Label alignment="CENTER" layoutX="41.0" layoutY="406.0" prefHeight="18.0" prefWidth="491.0" text="Status" textFill="#cc1616" />
+      <Label fx:id="lblStatus" alignment="CENTER" layoutX="41.0" layoutY="406.0" prefHeight="18.0" prefWidth="491.0" text="Status" textFill="#cc1616" />
       <Button layoutX="373.0" layoutY="315.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="72.0" style="-fx-background-color: cyan;" text="Reset">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Button>
+      <Button layoutX="175.0" layoutY="366.0" mnemonicParsing="false" onAction="#onDisplay" prefHeight="40.0" prefWidth="79.0" style="-fx-background-color: cyan;" text="Display">
          <effect>
             <InnerShadow />
          </effect>
