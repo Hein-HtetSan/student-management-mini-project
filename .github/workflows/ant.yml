@@ -15,5 +15,5 @@ jobs:
       - name: Set up JDK 1.8
         run: sudo apt-get update && sudo apt-get install -y openjdk-8-jdk
       - name: Build with Ant
-        run: ant -Dplatforms.JDK_1.8.home=/usr/lib/jvm/java-8-openjdk-amd64 jar
+        run: ant -Dplatforms.JDK_1.8.home=C:\Program Files\Java\jdk1.8.0_202 jar
 
