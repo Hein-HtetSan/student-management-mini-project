@@ -10,6 +10,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +23,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 //String stime = txtSTime.getText();
 //        String etime = txtETime.getText();
@@ -162,6 +172,35 @@ public class AttendanceController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private void onReport(ActionEvent event) throws ClassNotFoundException, SQLException, JRException {
+        Connection con = DBConnection.getConnection();
+        PreparedStatement stmt = con.prepareStatement("SELECT * FROM student");
+        ResultSet rs = stmt.executeQuery();
+        int id = 0;
+        ArrayList<Student> students = new ArrayList<Student>();
+        while(rs.next()){
+            id++;
+            String pid = rs.getString("pid");
+            String name = rs.getString("name");
+            
+            Student std = new Student();
+            std.setId(id);
+            std.setPid(pid);
+            std.setName(name);
+            students.add(std);
+        }
+        String path = "C:\\Users\\acer\\Documents\\NetBeansProjects\\StudentManagementSystem\\src\\Report\\StdReport.jrxml";
+        JasperReport jr = JasperCompileManager.compileReport(path);
+        HashMap map = new HashMap();
+        map.put("param1", "Student Report");
+        JRBeanArrayDataSource datasource = new JRBeanArrayDataSource(students.toArray());
+        JasperPrint jp = JasperFillManager.fillReport(jr, map, datasource);
+        JasperViewer.viewReport(jp);
+        
+        
     }
     
 }
