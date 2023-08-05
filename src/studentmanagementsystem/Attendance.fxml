@@ -40,5 +40,10 @@
             <InnerShadow />
          </effect>
       </Button>
+      <Button layoutX="268.0" layoutY="366.0" mnemonicParsing="false" onAction="#onReport" prefHeight="40.0" prefWidth="134.0" style="-fx-background-color: cyan;" text="Student Report">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>
