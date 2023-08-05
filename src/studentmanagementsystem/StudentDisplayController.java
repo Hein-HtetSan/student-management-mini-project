@@ -4,6 +4,7 @@
  */
 package studentmanagementsystem;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,10 +13,15 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -37,6 +43,12 @@ public class StudentDisplayController implements Initializable {
     private TableColumn<Attd, String> stdnameCol;
     @FXML
     private TableColumn<Attd, String> attdCol;
+    @FXML
+    private Label lblId;
+    @FXML
+    private Label lblName;
+    @FXML
+    private Label lblPercentage;
 
     /**
      * Initializes the controller class.
@@ -47,8 +59,13 @@ public class StudentDisplayController implements Initializable {
     }    
     
     String pid = "0";
-    public void setData(String id){
+    String name = "0";
+    public void setData(String id, String namee) throws ClassNotFoundException, SQLException{
         pid = id;
+        name = namee;
+        
+        lblId.setText(id);
+        lblName.setText(namee);
     }
 
     @FXML
@@ -59,6 +76,8 @@ public class StudentDisplayController implements Initializable {
         stdnameCol.setCellValueFactory(new PropertyValueFactory("stdname"));
         attdCol.setCellValueFactory(new PropertyValueFactory("attd"));
         
+        int pcount = 0;
+        int acount = 0;
         Connection con = DBConnection.getConnection();
         PreparedStatement stmt = con.prepareStatement("SELECT * FROM attendance WHERE pid=?");
         stmt.setString(1,pid);
@@ -72,7 +91,6 @@ public class StudentDisplayController implements Initializable {
             
             System.out.println(stime+etime+status+pid+suid);
             
-            
             Attd attd = new Attd();
             attd.setStime(stime);
             attd.setEtime(etime);
@@ -81,7 +99,23 @@ public class StudentDisplayController implements Initializable {
             attd.setSubject(suid);
                         
             tbl.getItems().add(attd);
+            if(status.equals("1")){
+                pcount++;
+            }else{
+                acount++;
+            }
         }
+        double percentage = pcount * 100 / (pcount + acount);
+        lblPercentage.setText(String.valueOf(percentage));
+    }
+
+    @FXML
+    private void onReport(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("AttendanceReport.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
     }
     
 }
