@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="196.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="studentmanagementsystem.AttendanceReportController">
+   <children>
+      <DatePicker fx:id="Sdate" layoutX="35.0" layoutY="77.0" prefHeight="47.0" prefWidth="194.0" />
+      <DatePicker fx:id="Edate" layoutX="247.0" layoutY="77.0" prefHeight="47.0" prefWidth="194.0" />
+      <Button layoutX="464.0" layoutY="77.0" mnemonicParsing="false" onAction="#onPrint" prefHeight="47.0" prefWidth="110.0" style="-fx-background-color: cyan;" text="Print" textFill="#2b1616">
+         <effect>
+            <InnerShadow />
+         </effect>
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
