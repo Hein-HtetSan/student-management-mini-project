@@ -62,11 +62,13 @@ public class StudentLoginController implements Initializable {
                 lblStatus.setText("Login Success!");
                 txtPid.setText("");
                 txtPassword.setText("");
+                
+                String name = rs.getString("name");
 //                
                 FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("StudentDisplay.fxml"));
                 Parent root = fxmlloader.load();
                 StudentDisplayController conn = fxmlloader.getController();
-                conn.setData(pid);
+                conn.setData(pid,name);
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.setScene(scene);
